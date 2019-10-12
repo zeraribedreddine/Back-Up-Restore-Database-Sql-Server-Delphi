@@ -1,0 +1,21 @@
+var Back_Db : string ;
+begin
+     if OpenDialog1.Execute then
+       begin
+         Back_Db := OpenDialog1.FileName ;
+         edt_path.Text := Back_Db ;
+       end;
+
+       with qry_restore do
+
+        begin
+
+          SQL.Clear ;
+          sql.Add('USE [MASTER] RESTORE DATABASE test FROM DISK = ' + QuotedStr (back_db)) ;
+          sql.Add('WITH FIle = 1, NOUNLOAD, STATS = 5');
+          ExecSQL ;
+
+          ShowMessage('...  „ «” —Ã«⁄ ﬁ«⁄œ… «·»Ì«‰«  »‰Ã«Õ ');
+        end;
+
+end;
